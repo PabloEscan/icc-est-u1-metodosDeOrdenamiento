@@ -1,18 +1,63 @@
-## Getting Started
 
-Welcome to the VS Code Java world. Here is a guideline to help you get started to write Java code in Visual Studio Code.
+# Práctica de Algoritmos de Ordenamiento
 
-## Folder Structure
+## 📌 Información General
 
-The workspace contains two folders by default, where:
+- **Título:** Práctica de Algoritmos de Ordenamiento
+- **Asignatura:** Estructura de Datos
+- **Carrera:** Computación
+- **Estudiante:** Pablo Esteban Escandón Lema
+- **Fecha:** 31 de marzo de 2025
+- **Profesor:** Ing. Pablo Torres
 
-- `src`: the folder to maintain sources
-- `lib`: the folder to maintain dependencies
+---
 
-Meanwhile, the compiled output files will be generated in the `bin` folder by default.
+## 🛠️ Descripción
 
-> If you want to customize the folder structure, open `.vscode/settings.json` and update the related settings there.
+Este proyecto implementa y compara diferentes algoritmos de ordenamiento en Java, incluyendo:
+- Método Burbuja
+- Método Selección
+- Método Inserción
+- Método Burbuja Mejorado
 
-## Dependency Management
+Se permite elegir:
+- Tipo de orden (Ascendente o Descendente).
+- Visualización de pasos intermedios.
+- Visualización del número de comparaciones y cambios.
 
-The `JAVA PROJECTS` view allows you to manage your dependencies. More details can be found [here](https://github.com/microsoft/vscode-java-dependency#manage-dependencies).
+---
+
+## 🚀 Ejecución
+
+Para ejecutar el proyecto:
+
+1. Compila el código:
+    ```bash
+    javac App.java
+    ```
+2. Ejecuta la aplicación:
+    ```bash
+    java App
+    ```
+
+---
+
+## 🧑‍💻 Ejemplo de Entrada
+
+```plaintext
+Seleccione el método de ordenamiento:
+1. Burbuja
+2. Selección
+3. Inserción
+4. Burbuja Mejorado
+5. Salir
+
+¿Desea ver los pasos? (true/false):
+true
+
+¿Desea ordenar ascendentemente (A) o descendentemente (D)?:
+A
+```
+
+---
+

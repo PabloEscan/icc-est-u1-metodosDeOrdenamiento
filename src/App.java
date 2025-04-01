@@ -1,64 +1,151 @@
+import java.util.Scanner;
+
 public class App {
     public static void main(String[] args) throws Exception {
-        //System.out.println("Hello, World!");
 
-        int [] listado = {64, 25, 12, 22, 11 };
-        //int[] listadon = new int[10000];
-        /*for (int i = 0; i<listado.length; i++){
-                listado[i]= (int)(Math.random() * 10000)+1; 
-            }*/
+        int[] arreglo = { 12, -7, 25, 0, -15, 33, 19, -22, 5, 48, -3, 27, -30, 14, 7, -1, 41, 20, -11, 8 }; 
 
+        //Instancias
         MetodoBurbuja mB = new MetodoBurbuja(); 
-        System.out.println("--Metodo Burbuja--") ;
-        System.out.println("Arreglo Original") ;
-        mB.imprimirArreglo(listado);
-        System.out.println("Arreglo Ordenado ascendente");
-        mB.ordenarAscendente(listado);
-        mB.imprimirArreglo(listado);
-        System.out.println("Arreglo Ordenado descendente");
-        mB.ordenarDescendente(listado);
-        mB.imprimirArreglo(listado);
-        System.out.println("Arreglo Ordenado ascendente");
-        mB.ordenar(listado, true);
-        mB.imprimirArreglo(listado);
-        System.out.println("Arreglo Ordenado descendente");
-        mB.ordenar(listado, false);
-        mB.imprimirArreglo(listado);
+        MetodoSeleccion mS= new MetodoSeleccion();
+        MetodoInsercion mI= new MetodoInsercion();
+        MetodoBurbujaMejorado mBM = new MetodoBurbujaMejorado();
 
-        /*MetodoSeleccion mS= new MetodoSeleccion();
-        System.out.println("--Metodo Seleccion--") ;
-        System.out.println("Arreglo Original") ;
-        mS.printarray(listado);
-        System.out.println("Arreglo Ordenado ascendente");
-        mS.ordenarAsendente(listado);
-        mS.printarray(listado);
-        System.out.println("Arreglo Ordenado descendente");
-        mS.ordenarDesendente(listado);
-        mS.printarray(listado);
-        System.out.println("Arreglo Ordenado descendente");
-        mS.ordenar(listado, false);
-        mS.printarray(listado);
-        System.out.println("Arreglo Ordenado ascendente");
-        mS.ordenar(listado, true);
-        mS.printarray(listado);*/
+        Scanner scanner = new Scanner(System.in);
+        boolean continuar = true;
 
-        /*MetodoInsercion mI= new MetodoInsercion();
-        System.out.println("--Metodo Inserción--") ;
-        System.out.println("Arreglo Original") ;
-        mI.printarray(listado);
-        System.out.println("Arreglo Ordenado ascendente");
-        mI.ordenarAsendente(listado);
-        mI.printarray(listado);
-        System.out.println("Arreglo Ordenado descendente");
-        mI.ordenarDecendente(listado);
-        mI.printarray(listado);
-        System.out.println("Arreglo Ordenado ascendente");
-        mI.ordenar(listado, true);
-        mI.printarray(listado);
-        System.out.println("Arreglo Ordenado descendente");
-        mI.ordenar(listado, false);
-        mI.printarray(listado);
-        System.out.println("Arreglo Ordenado con pasos!");
-        mI.ordenarConPasos(listado, true);*/
+        //MENU
+        while(continuar){
+            System.out.println("Metodos Ordenamientos");
+            System.out.println("1 -> Brubuja");
+            System.out.println("2 -> Selección");
+            System.out.println("3 -> Inserción");
+            System.out.println("4 -> Brubuja Mejorado");
+            System.out.println("5 -> Salir");
+
+            int metodo = getPositive(scanner, "Ingrese la opcion");
+            if (metodo == 5){
+                System.out.println("Adios");
+                continuar = false;
+                break;
+            }
+            String orden = getValString(scanner, new String[]{"A", "D"},"Deseas ordenar ascendentemente (A) o descendentemente(D)?: ");
+            String orden2 = getValString(scanner, new String[]{"true", "false"},"Deseas ver los pasos? (true/false): ");
+
+            switch(metodo){
+                case 1:
+                    System.out.println("Met. Burbuja");
+                    if (orden.equalsIgnoreCase("A")){
+                        if (orden2.equalsIgnoreCase("true")){
+                            mB.ordenarAscendentePasos(arreglo);
+                        }else{
+                            mB.ordenar(arreglo, true);
+                        }
+
+                    }else{
+                        if (orden2.equalsIgnoreCase("true")){
+                            mB.ordenarDescendentePasos(arreglo);
+                        }else{
+                            mB.ordenar(arreglo, false);
+                        }
+                    }
+                    continuar = false;
+                    break;
+
+                case 2:
+                    System.out.println("Met. Selección");
+                    if (orden.equalsIgnoreCase("A")){
+                        if (orden2.equalsIgnoreCase("true")){
+                            mS.ordenarAscendentePasos(arreglo);
+                        }else{
+                            mS.ordenar(arreglo, true);
+                        }
+
+                    }else{
+                        if (orden2.equalsIgnoreCase("true")){
+                            mS.ordenarDescendentePasos(arreglo);
+                        }else{
+                            mS.ordenar(arreglo, false);
+                        }
+                    }
+                    continuar = false;
+                    break;
+                    
+                case 3:
+                    System.out.println("Met. Inserción");
+                    if (orden.equalsIgnoreCase("A")){
+                        if (orden2.equalsIgnoreCase("true")){
+                            mI.ordenarAscendentePasos(arreglo);
+                        }else{
+                            mI.ordenar(arreglo, true);
+                        }
+
+                    }else{
+                        if (orden2.equalsIgnoreCase("true")){
+                            mS.ordenarDescendentePasos(arreglo);
+                        }else{
+                            mS.ordenar(arreglo, false);
+                        }
+                    }
+                    continuar = false;
+                    break;
+
+                case 4:
+                    System.out.println("Met. Burbuja mejorado");
+                    if (orden.equalsIgnoreCase("A")){
+                        if (orden2.equalsIgnoreCase("true")){
+                            mBM.ordenarAscendentePasos(arreglo);
+                        }else{
+                            mBM.ordenar(arreglo, true);
+                        }
+
+                    }else{
+                        if (orden2.equalsIgnoreCase("true")){
+                            mBM.ordenarDescendentePasos(arreglo);
+                        }else{
+                            mBM.ordenar(arreglo, false);
+                        }
+                    }
+                    continuar = false;
+                    break;
+
+                default:
+                    System.out.println("Opción Invaloda");
+                    break;
+            }
+        }   
+    }
+
+    //OPCIONES
+    public static int getPositive(Scanner scanner, String message){
+        int input; 
+        do {
+            System.out.println(message + ": ");
+            input = scanner.nextInt();
+            if (input <= 0){
+                System.out.println("El número debe ser positivo, intente nuevamente.");
+            }
+        } while(input <= 0);
+        return input;
+    }
+
+    public static String getValString(Scanner scanner, String[] posibles, String message){
+        String input;
+        boolean valido;
+        do{
+            System.out.println(message);
+            input = scanner.next();
+            valido = false;
+            for (String posible : posibles){
+                if(input.equalsIgnoreCase(posible)){
+                    valido = true;
+                    break;
+                } 
+            }if (!valido) { 
+                System.out.println("Opción no válida. Inténtalo de nuevo.");
+            }
+        } while (!valido);
+        return input;
     }
 }
+
